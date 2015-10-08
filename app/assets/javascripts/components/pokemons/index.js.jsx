@@ -23,7 +23,7 @@
           <ul>
           {
             this.state.pokemons.map(function(pokemon){
-              return <li className="poke-list-item"><PokemonIndexItem pokemon={pokemon} key={pokemon.id} /></li>;
+              return <li key= {pokemon.id} className="poke-list-item"><PokemonIndexItem key={pokemon.id} pokemon={pokemon} /></li>;
             })
           }
         </ul>

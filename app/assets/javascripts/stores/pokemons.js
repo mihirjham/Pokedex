@@ -11,6 +11,13 @@
     all: function(){
       return _pokemons.slice();
     },
+    find: function(id){
+      for(var i = 0; i < _pokemons.length; i++){
+        if(_pokemons[i].id === id){
+          return _pokemons[i];
+        }
+      }
+    },
     addPokemonsIndexChangeListener: function(handler){
       this.on(POKEMON_INDEX_CHANGE_EVENT, handler);
     },
