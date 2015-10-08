@@ -15,4 +15,7 @@
 //= require flux
 //= require eventemitter
 //= require react
+//= require react_ujs
+//= require components
+//= require pokedex
 //= require_tree .
