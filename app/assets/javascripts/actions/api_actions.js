@@ -9,6 +9,14 @@
       };
 
       AppDispatcher.dispatch(action);
+    },
+    receiveSinglePokemon: function(pokemon){
+      var action = {
+        actionType: PokemonConstants.POKEMON_RECEIVED,
+        pokemon: pokemon
+      };
+
+      AppDispatcher.dispatch(action);
     }
   };
 }(this));

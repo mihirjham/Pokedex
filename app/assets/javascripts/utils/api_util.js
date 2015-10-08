@@ -11,6 +11,17 @@
           ApiActions.receiveAllPokemon(responseData);
         }
       });
+    },
+
+    fetchPokemon: function(id){
+      $.ajax({
+        url: "/api/pokemon/" + id.toString(),
+        type: "get",
+        dataType: "json",
+        success: function(responseData){
+          ApiActions.receiveSinglePokemon(responseData);
+        }
+      });
     }
   };
 

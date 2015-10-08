@@ -5,8 +5,18 @@
   var resetPokemons = function(pokemons){
     _pokemons = pokemons.slice();
   };
-  var POKEMON_INDEX_CHANGE_EVENT = "POKEMON_INDEX_CHANGE_EVENT";
 
+  var resetSinglePokemon = function(pokemon){
+    for(var i = 0; i < _pokemons.length; i++){
+      if(_pokemons[i].id === pokemon.id){
+        _pokemons[i] = pokemon;
+        return;
+      }
+    }
+    _pokemons.push(pokemon);
+  }
+  var POKEMON_INDEX_CHANGE_EVENT = "POKEMON_INDEX_CHANGE_EVENT";
+  
   var PokemonStore = root.PokemonStore = $.extend({}, EventEmitter.prototype, {
     all: function(){
       return _pokemons.slice();
@@ -31,6 +41,11 @@
       switch(payload.actionType){
         case PokemonConstants.POKEMONS_RECEIVED:
           resetPokemons(payload.pokemons);
+          PokemonStore.changed();
+          break;
+
+        case PokemonConstants.POKEMON_RECEIVED:
+          resetSinglePokemon(payload.pokemon);
           PokemonStore.changed();
           break;
       }
