@@ -16,7 +16,7 @@
     _pokemons.push(pokemon);
   }
   var POKEMON_INDEX_CHANGE_EVENT = "POKEMON_INDEX_CHANGE_EVENT";
-  
+
   var PokemonStore = root.PokemonStore = $.extend({}, EventEmitter.prototype, {
     all: function(){
       return _pokemons.slice();
@@ -25,6 +25,16 @@
       for(var i = 0; i < _pokemons.length; i++){
         if(_pokemons[i].id === id){
           return _pokemons[i];
+        }
+      }
+    },
+    findToy: function(id, toyId){
+      var pokemon = this.find(id);
+      if(pokemon){
+        for(var i = 0; i < pokemon.toys.length; i++){
+          if(pokemon.toys[i].id === toyId){
+            return pokemon.toys[i];
+          }
         }
       }
     },

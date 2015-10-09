@@ -14,6 +14,9 @@
       PokemonStore.addPokemonsIndexChangeListener(this._onChange);
       ApiUtil.fetchPokemon(parseInt(this.props.params.pokemonId));
     },
+    componentWillUnmount: function(){
+      PokemonStore.removePokemonsIndexChangeListener(this._onChange);
+    },
     _onChange: function(){
       this.setState({pokemon: this.getStateFromStore()});
     },
@@ -41,7 +44,7 @@
                 })
               }
             </ul>
-
+          <ToysIndex toys={this.state.pokemon.toys} />
         </div>
       );
     }

@@ -6,6 +6,7 @@ var Index = React.createClass({
   render: function(){
     return(
       <div>
+        <PokemonForm />
         <div className="pokemon-index">
           <PokemonsIndex />
         </div>
@@ -20,6 +21,7 @@ $(document).ready(function () {
     <Router>
       <Route path="/" component={Index}>
         <Route path="pokemon/:pokemonId" component={PokemonDetail} />
+        <Route path="/pokemon/:pokemonId/toys/:toyId" components={{pokemonDetail: PokemonDetail, toyDetail: ToyDetail}} />
       </Route>
     </Router>
   , document.getElementById("pokedex"));
